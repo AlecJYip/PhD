@@ -839,8 +839,6 @@ G_T = 10^(35/10); %linear gain of transmitting antenna
 
 P_T = 2e6; %watts, transmit power
 
-%P_T = 3e3;
-
 F = 9; %dB
 
 G_R = 10^(8/10); %linear gain of receiver antenna
