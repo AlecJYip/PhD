@@ -29,7 +29,7 @@ avg_terrain_height = H_0-h_0;
 
 stable_A4 = A4; % elevation above sea level, m
 
-f1 = 1215e6; %MHz
+f1 = 1250e6; %MHz
 
 f2 = 1350e6; %MHz
 
@@ -662,176 +662,176 @@ L_p_longley_rice_f2 = [L_p_longley_rice_f2 pl];
 
 
 
-%% Longley-Rice Coverage
-% 
-% 
-% tx = txsite(Latitude= phi_1*180/pi,Longitude= theta_1*180/pi, ...
-%     TransmitterFrequency=f1);
-% pm = propagationModel("longley-rice");
-% 
-% L_longley_p1 = zeros(1,length(A3));
-% 
-% for counter = 1:length(A3)
-% 
-%     L_longley_p1(counter) = display_pathloss(pm, A3(counter)*180/pi, A2(counter)*180/pi, tx);
-%     %disp(counter)
-% 
-% end
-% 
-% figure;
-% 
-% subplot(1,2,1);
-% 
-% hold all;
-% 
-% 
-% plotting(A3, A2, L_longley_p1, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz'];
-% title(a);
-% hold all
-% 
-% subplot(1,2,2)
-% 
-% hold all
-% 
-% tx = txsite(Latitude= phi_1*180/pi,Longitude= theta_1*180/pi, ...
-%     TransmitterFrequency=f2);
-% pm = propagationModel("longley-rice");
-% 
-% L_longley_p2 = zeros(1,length(A3));
-% 
-% for counter = 1:length(A3)
-% 
-%     L_longley_p2(counter) = display_pathloss(pm, A3(counter)*180/pi, A2(counter)*180/pi, tx);
-%     %disp(counter)
-% 
-% end
-% plotting(A3, A2, L_longley_p2, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% a = ['f = ', num2str(f2/(1e6)), ' MHz'];
-% title(a);
-% hold all
+% Longley-Rice Coverage
+
+
+tx = txsite(Latitude= phi_1*180/pi,Longitude= theta_1*180/pi, ...
+    TransmitterFrequency=f1);
+pm = propagationModel("longley-rice");
+
+L_longley_p1 = zeros(1,length(A3));
+
+for counter = 1:length(A3)
+
+    L_longley_p1(counter) = display_pathloss(pm, A3(counter)*180/pi, A2(counter)*180/pi, tx);
+    %disp(counter)
+
+end
+
+figure;
+
+subplot(1,2,1);
+
+hold all;
+
+
+plotting(A3, A2, L_longley_p1, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz'];
+title(a);
+hold all
+
+subplot(1,2,2)
+
+hold all
+
+tx = txsite(Latitude= phi_1*180/pi,Longitude= theta_1*180/pi, ...
+    TransmitterFrequency=f2);
+pm = propagationModel("longley-rice");
+
+L_longley_p2 = zeros(1,length(A3));
+
+for counter = 1:length(A3)
+
+    L_longley_p2(counter) = display_pathloss(pm, A3(counter)*180/pi, A2(counter)*180/pi, tx);
+    %disp(counter)
+
+end
+plotting(A3, A2, L_longley_p2, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+a = ['f = ', num2str(f2/(1e6)), ' MHz'];
+title(a);
+hold all
 
 
 %% Big plot of PL for f = f1
 
 
-% figure;
-% 
-% subplot(2,2,1);
-% 
-% hold all;
-% 
-% n = 2;
-% 
-% plotting(A3, A2, L_p1_n2, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% legend off
-% 
-% subplot(2,2,3);
-% 
-% hold all;
-% 
-% n = 5;
-% 
-% plotting(A3, A2, L_p1_n5, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% legend off
-% 
-% subplot(2,2,4);
-% 
-% hold all;
-% 
-% 
-% plotting(A3, A2, L_longley_p1, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
-% title(a);
-% hold all
+figure;
+
+subplot(2,2,1);
+
+hold all;
+
+n = 2;
+
+plotting(A3, A2, L_p1_n2, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
+title(a);
+hold all
+
+legend off
+
+subplot(2,2,3);
+
+hold all;
+
+n = 5;
+
+plotting(A3, A2, L_p1_n5, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
+title(a);
+hold all
+
+legend off
+
+subplot(2,2,4);
+
+hold all;
 
 
-%% Big plot of PL for f = f2
+plotting(A3, A2, L_longley_p1, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
+title(a);
+hold all
 
 
-% figure;
-% 
-% subplot(2,2,1);
-% 
-% hold all;
-% 
-% n = 2;
-% 
-% plotting(A3, A2, L_p2_n2, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% title off
-% hold all
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% legend off
-% 
-% subplot(2,2,3);
-% 
-% hold all;
-% 
-% n = 5;
-% 
-% plotting(A3, A2, L_p2_n5, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% title off
-% hold all
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% legend off
-% 
-% subplot(2,2,4);
-% 
-% hold all;
-% 
-% 
-% plotting(A3, A2, L_longley_p2, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% title off
-% hold all
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Longley-Rice'];
-% title(a);
-% hold all
+% Big plot of PL for f = f2
+
+
+figure;
+
+subplot(2,2,1);
+
+hold all;
+
+n = 2;
+
+plotting(A3, A2, L_p2_n2, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+title off
+hold all
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
+title(a);
+hold all
+
+legend off
+
+subplot(2,2,3);
+
+hold all;
+
+n = 5;
+
+plotting(A3, A2, L_p2_n5, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+title off
+hold all
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law for n = ', num2str(n)];
+title(a);
+hold all
+
+legend off
+
+subplot(2,2,4);
+
+hold all;
+
+
+plotting(A3, A2, L_longley_p2, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+title off
+hold all
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Longley-Rice'];
+title(a);
+hold all
 
 %% Input SNR
 
@@ -959,6 +959,8 @@ plot(SNR_high_pem_n_2, 'color', '#90EE90', 'LineStyle','-','LineWidth',2);
 
 plot(SNR_low_pem_n_2, 'color', '#90EE90', 'LineStyle','--','LineWidth',2); 
 
+ylim([20 120])
+
 grid on;
 
 ylabel('SNR [dB]')
@@ -1036,6 +1038,8 @@ plot(SNR_low_roa_n_5, 'color', '#f3b994', 'LineStyle','--','LineWidth',2);
 plot(SNR_high_pem_n_5, 'color', '#90EE90', 'LineStyle','-','LineWidth',2); 
 
 plot(SNR_low_pem_n_5, 'color', '#90EE90', 'LineStyle','--','LineWidth',2); 
+
+ylim([20 120])
 
 grid on;
 
@@ -1117,6 +1121,11 @@ plot(SNR_high_pem_lr, 'color', '#90EE90', 'LineStyle','-','LineWidth',2);
 
 plot(SNR_low_pem_lr, 'color', '#90EE90', 'LineStyle','--','LineWidth',2); 
 
+ylim([20 120])
+
+xlim([1 12])
+
+
 grid on;
 
 ylabel('SNR [dB]')
@@ -1135,7 +1144,6 @@ legend('Blacksburg (Avg High)', 'Blacksburg (Avg Low)',...
     'Christiansburg (Avg High)', 'Christiansburg, (Avg Low)',...
     'Roanoke (Avg High)', 'Roanoke (Avg Low)',...
     'Pembroke (Avg High)', 'Pembroke (Avg Low)')
-xlim([1 12])
 
 
 %% for n = 5
@@ -1211,6 +1219,8 @@ set(gca,'FontSize', 20)
 
 axis square
 
+ylim([20 120])
+
 a = ['f = ',num2str(f2/(1e6)), ' MHz, Power Law Model for n = 2'];
 
 title(a)
@@ -1278,6 +1288,9 @@ plot(SNR_low_roa_n_5, 'color', '#f3b994', 'LineStyle','--','LineWidth',2);
 plot(SNR_high_pem_n_5, 'color', '#90EE90', 'LineStyle','-','LineWidth',2); 
 
 plot(SNR_low_pem_n_5, 'color', '#90EE90', 'LineStyle','--','LineWidth',2); 
+
+ylim([20 120])
+
 
 grid on;
 
@@ -1359,6 +1372,8 @@ plot(SNR_high_pem_lr, 'color', '#90EE90', 'LineStyle','-','LineWidth',2);
 
 plot(SNR_low_pem_lr, 'color', '#90EE90', 'LineStyle','--','LineWidth',2); 
 
+ylim([20 120])
+
 grid on;
 
 ylabel('SNR [dB]')
@@ -1380,309 +1395,311 @@ legend('Blacksburg (Avg High)', 'Blacksburg (Avg Low)',...
 xlim([1 12])
 
 
+
+
 %% received power 
 
-% for counter = 1:length(L_p1_n5)
-% 
-%     L_p1_n2(counter) = 10^(0.1*L_p1_n2(counter));
-% 
-%     L_p2_n2(counter) = 10^(0.1*L_p2_n2(counter));
-% 
-%     L_p1_n5(counter) = 10^(0.1*L_p1_n5(counter));
-% 
-%     L_p2_n5(counter) = 10^(0.1*L_p2_n5(counter));
-% 
-%     L_longley_p1(counter) = 10^(0.1*L_longley_p1(counter));
-% 
-%     L_longley_p2(counter) = 10^(0.1*L_longley_p2(counter));
-% 
-% 
-% end
+for counter = 1:length(L_p1_n5)
 
-% %%
-% 
-% 
-% P_R_p1_n2 = received_power(P_T, G_T, G_R, L_p1_n2);
-% 
-% P_R_p2_n2 = received_power(P_T, G_T, G_R, L_p2_n2);
-% 
-% P_R_p1_n5 = received_power(P_T, G_T, G_R, L_p1_n5);
-% 
-% P_R_p2_n5 = received_power(P_T, G_T, G_R, L_p2_n5);
-% 
-% P_longley_p1 = received_power(P_T, G_T, G_R, L_longley_p1);
-% 
-% P_longley_p2 = received_power(P_T, G_T, G_R, L_longley_p2);
-% 
-% 
-% 
-% %% plotting power
-% 
-% 
-% figure;
-% 
-% subplot(2,2,1);
-% 
-% hold all;
-% 
-% n = 2;
-% 
-% plotting(A3, A2, P_R_p1_n2+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% 
-% legend off
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% legend off
-% 
-% 
-% subplot(2,2,3)
-% 
-% hold all
-% 
-% n = 5;
-% 
-% plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% legend off
-% 
-% 
-% 
-% subplot(2,2,4)
-% 
-% hold all
-% 
-% plotting(A3, A2, P_longley_p1+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% 
-% figure;
-% 
-% subplot(2,2,1);
-% 
-% hold all;
-% 
-% n = 2;
-% 
-% plotting(A3, A2, P_R_p2_n2+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% 
-% legend off
-% title off
-% hold all
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% legend off
-% 
-% 
-% subplot(2,2,3)
-% 
-% hold all
-% 
-% n = 5;
-% 
-% plotting(A3, A2, P_R_p2_n5+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% title off
-% hold all
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% legend off
-% 
-% 
-% 
-% subplot(2,2,4)
-% 
-% hold all
-% 
-% plotting(A3, A2, P_longley_p2+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
+    L_p1_n2(counter) = 10^(0.1*L_p1_n2(counter));
+
+    L_p2_n2(counter) = 10^(0.1*L_p2_n2(counter));
+
+    L_p1_n5(counter) = 10^(0.1*L_p1_n5(counter));
+
+    L_p2_n5(counter) = 10^(0.1*L_p2_n5(counter));
+
+    L_longley_p1(counter) = 10^(0.1*L_longley_p1(counter));
+
+    L_longley_p2(counter) = 10^(0.1*L_longley_p2(counter));
 
 
-% 
-% 
-% figure;
-% 
-% subplot(1,2,1);
-% 
-% hold all;
-% 
-% n = 2;
-% 
-% plotting(A3, A2, P_R_p1_n2+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% 
-% subplot(1,2,2)
-% 
-% hold all
-% plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% 
-% figure;
-% 
-% subplot(1,2,1)
-% 
-% n = 5;
-% 
-% plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% 
-% subplot(1,2,2)
-% 
-% hold all
-% plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% 
-% %longley rice
-% 
-% figure;
-% 
-% subplot(1,2,1)
-% 
-% plotting(A3, A2, P_longley_p1+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f1)
-% title off
-% hold all
-% a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
-% 
-% 
-% subplot(1,2,2)
-% 
-% hold all
-% plotting(A3, A2, P_longley_p2+30, XGrid, YGrid, theta_1, phi_1,...
-%     theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
-%     x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
-%     xRange, yRange, n, f2)
-% a = ['f = ', num2str(f2/(1e6)), ' MHz, Longley-Rice'];
-% title(a);
-% hold all
-% 
-% clim auto
-% hc = colorbar('EastOutside');
-% 
-% ylabel(hc,'Received Power [dBm]','FontSize',16)
+end
+
+%%
+
+
+P_R_p1_n2 = received_power(P_T, G_T, G_R, L_p1_n2);
+
+P_R_p2_n2 = received_power(P_T, G_T, G_R, L_p2_n2);
+
+P_R_p1_n5 = received_power(P_T, G_T, G_R, L_p1_n5);
+
+P_R_p2_n5 = received_power(P_T, G_T, G_R, L_p2_n5);
+
+P_longley_p1 = received_power(P_T, G_T, G_R, L_longley_p1);
+
+P_longley_p2 = received_power(P_T, G_T, G_R, L_longley_p2);
+
+
+
+%% plotting power
+
+
+figure;
+
+subplot(2,2,1);
+
+hold all;
+
+n = 2;
+
+plotting(A3, A2, P_R_p1_n2+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+
+legend off
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+legend off
+
+
+subplot(2,2,3)
+
+hold all
+
+n = 5;
+
+plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+legend off
+
+
+
+subplot(2,2,4)
+
+hold all
+
+plotting(A3, A2, P_longley_p1+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+
+figure;
+
+subplot(2,2,1);
+
+hold all;
+
+n = 2;
+
+plotting(A3, A2, P_R_p2_n2+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+
+legend off
+title off
+hold all
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+legend off
+
+
+subplot(2,2,3)
+
+hold all
+
+n = 5;
+
+plotting(A3, A2, P_R_p2_n5+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+title off
+hold all
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+legend off
+
+
+
+subplot(2,2,4)
+
+hold all
+
+plotting(A3, A2, P_longley_p2+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+
+
+
+
+figure;
+
+subplot(1,2,1);
+
+hold all;
+
+n = 2;
+
+plotting(A3, A2, P_R_p1_n2+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+
+subplot(1,2,2)
+
+hold all
+plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+
+figure;
+
+subplot(1,2,1)
+
+n = 5;
+
+plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+
+subplot(1,2,2)
+
+hold all
+plotting(A3, A2, P_R_p1_n5+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Power Law n = ', num2str(n)];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+
+%longley rice
+
+figure;
+
+subplot(1,2,1)
+
+plotting(A3, A2, P_longley_p1+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f1)
+title off
+hold all
+a = ['f = ', num2str(f1/(1e6)), ' MHz, Longley-Rice'];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
+
+
+subplot(1,2,2)
+
+hold all
+plotting(A3, A2, P_longley_p2+30, XGrid, YGrid, theta_1, phi_1,...
+    theta_pem, phi_pem, theta_roa, phi_roa, theta_b, phi_b, theta_c, phi_c,...
+    x_lower, x_upper, y_lower, y_upper, clim_lower, clim_upper,...
+    xRange, yRange, n, f2)
+a = ['f = ', num2str(f2/(1e6)), ' MHz, Longley-Rice'];
+title(a);
+hold all
+
+clim auto
+hc = colorbar('EastOutside');
+
+ylabel(hc,'Received Power [dBm]','FontSize',16)
 
 
 
